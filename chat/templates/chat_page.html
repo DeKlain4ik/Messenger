@@ -188,7 +188,7 @@
             <p class="empty-placeholder" id="no-other-chats-placeholder">Інших чатів поки немає</p>
         {% endif %}
 
-        <!-- Модалка підтвердження видалення -->
+        <!-- Модалка підтвердження видалення чату -->
         <div id="delete-confirm-modal" class="settings-modal" style="display: none;">
             <div class="settings-modal-content">
                 <h2>Видалити чат?</h2>
@@ -415,6 +415,28 @@
                 <button type="button" class="btn-secondary" id="cancel-modal-btn">Скасувати</button>
                 <button type="submit" form="settings-form" class="btn-primary" id="save-modal-btn">Зберегти</button>
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- МОДАЛКА ВИДАЛЕННЯ АКАУНТА — поза будь-якими іншими модалами -->
+<div id="delete-account-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-window">
+        <div class="modal-header">
+            <h2 class="modal-title">Видалити акаунт?</h2>
+        </div>
+        <p style="color: #6b7280; font-size: 14px; margin: 0 0 20px;">
+            Це незворотна дія. Всі ваші дані, чати та повідомлення будуть видалені назавжди.
+        </p>
+        <div style="display: flex; gap: 10px;">
+            <button type="button" id="cancel-delete-account-btn" class="btn-cancel"
+                style="padding: 8px 16px; border: 1px solid #e5e7eb; border-radius: 8px; background:#fff; cursor:pointer; font-size:14px;">
+                Скасувати
+            </button>
+            <button type="button" id="confirm-delete-account-btn"
+                style="padding: 8px 16px; border-radius: 8px; cursor:pointer; font-size:14px; font-weight:600; background:#ef4444; border:none; color:#fff;">
+                Видалити акаунт
+            </button>
         </div>
     </div>
 </div>

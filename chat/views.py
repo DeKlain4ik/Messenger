@@ -170,11 +170,48 @@ def handle_chat_page(chat_id=None):
                     return flask.jsonify({'success': True, 'id': deleted_group_id})
 
                 return flask.jsonify({'success': False, 'error': 'Чат не знайдено'}), 404
+            
 
             except Exception as e:
                 DATABASE.session.rollback()
                 print(f"[delete_chat ERROR] {e}")
                 return flask.jsonify({'success': False, 'error': 'Помилка сервера при видаленні чату'}), 500
+            
+
+        elif action == "delete_account":
+            try:
+                # Зберігаємо реальний об'єкт користувача ДО logout
+                user = User.query.get(int(flask_login.current_user.id))
+                if not user:
+                    return flask.jsonify({'success': False, 'error': 'Користувача не знайдено'}), 404
+
+                # Видаляємо власний чат, якщо є
+                own_group = Groups.query.filter_by(owner_id=user.id).first()
+                if own_group:
+                    deleted_group_id = own_group.id
+                    own_group.users.clear()
+                    DATABASE.session.delete(own_group)
+                    DATABASE.session.flush()
+                    socket.emit('group_deleted', {'id': deleted_group_id})
+
+                # Видаляємо аватар з диска
+                if user.avatar:
+                    avatar_path = os.path.join(CURRENT_DIR, 'static', 'avatars',
+                                            os.path.basename(user.avatar))
+                    if os.path.exists(avatar_path):
+                        os.remove(avatar_path)
+
+                # Спочатку logout, потім видалення з бази
+                flask_login.logout_user()
+                DATABASE.session.delete(user)
+                DATABASE.session.commit()
+
+                return flask.jsonify({'success': True})
+
+            except Exception as e:
+                DATABASE.session.rollback()
+                print(f"[delete_account ERROR] {e}")
+                return flask.jsonify({'success': False, 'error': str(e)}), 500
 
     # GET-запит — формування даних для шаблону
     current_user_id = int(flask_login.current_user.id)

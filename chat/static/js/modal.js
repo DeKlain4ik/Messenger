@@ -567,4 +567,52 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+        // 12. ВИДАЛЕННЯ АКАУНТА
+    const deleteAccountModal = document.getElementById('delete-account-modal');
+    const deleteAccountBtn   = document.querySelector('.btn-delete-account');
+    const cancelDeleteAccBtn = document.getElementById('cancel-delete-account-btn');
+    const confirmDeleteAccBtn = document.getElementById('confirm-delete-account-btn');
+
+    if (deleteAccountBtn) {
+        deleteAccountBtn.addEventListener('click', () => {
+            // закриваємо налаштування, відкриваємо підтвердження
+            if (settingsModal) settingsModal.style.display = 'none';
+            if (deleteAccountModal) deleteAccountModal.style.display = 'flex';
+        });
+    }
+
+    if (cancelDeleteAccBtn) {
+        cancelDeleteAccBtn.addEventListener('click', () => {
+            deleteAccountModal.style.display = 'none';
+        });
+    }
+
+    if (confirmDeleteAccBtn) {
+        confirmDeleteAccBtn.addEventListener('click', () => {
+            const fd = new FormData();
+            fd.append('action', 'delete_account');
+
+            fetch(CHAT_API_URL, { method: 'POST', body: fd })
+                .then(r => r.json())
+                .then(data => {
+                    if (data.success) {
+                        window.location.href = '/registration';
+                    } else {
+                        alert('Помилка: ' + (data.error || 'Не вдалося видалити акаунт'));
+                    }
+                })
+                .catch(err => {
+                    console.error('delete_account error:', err);
+                    alert('Помилка мережі: ' + err.message);
+                });
+        });
+    }
+
+    window.addEventListener('click', function(e) {
+        if (deleteAccountModal && e.target === deleteAccountModal) {
+            deleteAccountModal.style.display = 'none';
+        }
+    });
+
 }); // Кінець DOMContentLoaded
+

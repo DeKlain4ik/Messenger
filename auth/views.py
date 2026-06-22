@@ -79,7 +79,7 @@ def registration_view():
         '''
 
         try:
-            image_path = os.path.join(AUTH_STATIC_DIR, 'images', 'world_it.svg')
+            image_path = os.path.join(AUTH_STATIC_DIR, 'images', 'people.jpg')
 
             with smtplib.SMTP(host="smtp.gmail.com", port=587) as smtp:
                 smtp.starttls()

@@ -1,6 +1,6 @@
 <div align="center">
 
-# 💬 WorldIt Messenger
+# 💬 Misha's Messenger
 
 **Веб-месенджер у реальному часі на Flask, Jinja2, SQLAlchemy та Socket.IO**
 **A real-time web messenger built with Flask, Jinja2, SQLAlchemy, and Socket.IO**
@@ -40,13 +40,11 @@
 
 ### 👥 2. Склад команди
 
+Проєкт виконано **самостійно (solo)**, без команди.
+
 | Учасник | GitHub |
 |---|---|
 | Mykhailo Mishchenko | [github.com/DeKlain4ik](https://github.com/DeKlain4ik) |
-| Viktor Horiunov | [github.com/iv1teq](https://github.com/iv1teq) |
-| Anna Petrenko | [github.com/AnnaPetrenko1702](https://github.com/AnnaPetrenko1702) |
-| Mykhailo Morozov | [github.com/Miaha08morozov](https://github.com/Miaha08morozov) |
-| Kirill Malzev | [github.com/kirillmalcev](https://github.com/kirillmalcev) |
 
 ---
 
@@ -207,13 +205,11 @@ In short, it's a solid "learning sandbox" for understanding the architecture of 
 
 ### 👥 2. Team Members
 
+This project was completed **solo**, without a team.
+
 | Member | GitHub |
 |---|---|
 | Mykhailo Mishchenko | [github.com/DeKlain4ik](https://github.com/DeKlain4ik) |
-| Viktor Horuinov | [github.com/iv1teq](https://github.com/iv1teq) |
-| Anna Petrenko | [github.com/AnnaPetrenko1702](https://github.com/AnnaPetrenko1702) |
-| Mykhailo Morozov | [github.com/Miaha08morozov](https://github.com/Miaha08morozov) |
-| Kirill Malzev | [github.com/kirillmalcev](https://github.com/kirillmalcev) |
 
 ---
 
